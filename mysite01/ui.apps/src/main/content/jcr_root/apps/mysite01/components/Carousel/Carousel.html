@@ -1,0 +1,10 @@
+<sly data-sly-use.model="com.adobe.mysite01.core.models.arousel"/>
+<div>
+ <ul data-sly-list.item="${model.multifield}">
+    <li>text:${item.textfield}</li>
+    <li>path:${item.pathfield}</li>
+    <ul data-sly-list.item1="${item.multifield1}">
+        <li>title:${item1.text}</li>
+    </ul>
+ </ul>
+</div>

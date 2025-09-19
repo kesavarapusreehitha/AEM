@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/conf/marvel" mode="merge"/>
+    <filter root="/content/marvel" mode="merge"/>
+    <filter root="/content/dam/marvel" mode="merge"/>
+    <filter root="/content/experience-fragments/marvel" mode="merge"/>
+</workspaceFilter>

@@ -1,0 +1,10 @@
+<sly data-sly-use.model="com.adobe.mysite01.core.models.HeaderModel"/>
+<div>
+    <h1>Title:${model.text}</h1>
+    <p>path:${model.pathfield}</p>
+    <p>check:${model.checkbox ? 'checked':'unchecked'}</p>
+    <ul data-sly-list="${model.multifield}">
+        <li>text:${item.textfield}</li>
+         <li>date: ${item.datepicker}</li>
+    </ul>
+</div>
