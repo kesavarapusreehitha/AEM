@@ -1,0 +1,20 @@
+<sly data-sly-use.model="com.Marvel.core.models.SideBarNav"/>
+<div>
+   <img src="${model.logoPath}" alt="not found" height=50px width=50px>
+    <p>logoMobile:${model.logoMobile}</p>
+    <p>logoLink:${model.logoLink}</p>
+    <p>checkbox:${model.checkbox}</p>
+    <p>Country:${model.country}</p>
+    <ul data-sly-list.item="${model.multifield}">
+        <li>Name:${item.name}</li>
+        <li>Image:${item.image}</li>
+    </ul>
+    <ul data-sly-list.item1="${model.multifield1}">
+        <li>Desktop:${item1.desktop}</li>
+        <li>Mobile:${item1.mobile}</li>
+        <ul data-sly-list.item2="${item1.multifield2}">
+            <li>Navigation:${item2.navigation}</li>
+        </ul>
+    </ul>
+
+</div>

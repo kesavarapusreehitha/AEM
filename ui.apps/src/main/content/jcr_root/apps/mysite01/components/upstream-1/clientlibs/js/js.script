@@ -1,0 +1,27 @@
+(function ($, $document) {
+    "use strict";
+
+    $document.on("dialog-beforeclose", function (e) {
+        const dialog = $(".coral-Dialog");
+        const inputs = dialog.find("input, textarea, coral-pathfield, coral-multifield");
+        let emptyFields = [];
+
+        inputs.each(function () {
+            const field = $(this);
+            const label = field.closest(".coral-Form-fieldwrapper").find("label").text().trim();
+            const value = field.val();
+
+            if (!value) {
+                emptyFields.push(label);
+            }
+        });
+
+        if (emptyFields.length === inputs.length) {
+            alert("None of the fields are authored in the cq:dialog.");
+            e.preventDefault();
+        } else if (emptyFields.length > 0) {
+            alert(emptyFields.join(", ") + " are not authored in the cq:dialog.");
+            e.preventDefault();
+        }
+    });
+})(Granite.$, jQuery(document));

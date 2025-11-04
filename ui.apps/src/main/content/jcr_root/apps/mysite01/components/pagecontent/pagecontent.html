@@ -1,0 +1,14 @@
+<sly data-sly-use.model="com.adobe.mysite01.core.models.PaginatedModel">
+
+    <p>Page Number: ${model.pageNumber}</p>
+    <p>Total Pages: ${model.totalPages}</p>
+    <p>Total Items: ${model.totalItems}</p>
+    <p>Page Limit: ${model.pageLimit}</p>
+   
+
+    <ul data-sly-list.item="${model.paginatedItems}">
+        <li>${item}</li>
+    </ul>
+</sly>
+
+

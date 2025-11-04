@@ -1,0 +1,16 @@
+<sly data-sly-use.model="com.adobe.mysite01.core.models.UpstreamModel"></sly>
+   <div>
+        <sly data-sly-test="${model.missingFields.size == 0}"> 
+            <p style="color:green;"> All fields are properly authored.</p>
+        </sly>
+
+        <sly data-sly-test="${model.missingFields.size > 0}">
+            <p style="color:red;">️ The following fields are not authored in the cq:dialog:</p>
+            <ul>
+                <sly data-sly-list.field="${model.missingFields}">
+                    <li>${field}</li>
+                </sly>
+            </ul>
+        </sly>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<sly data-sly-use.dataModel="com.adobe.mysite01.core.models.sites.FormDataModel"/>
+
+<table border="1" class="form-data-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <sly data-sly-list.record="${dataModel.formDataList}">
+            <tr>
+                <td>${record.name}</td>
+                <td>${record.email}</td>
+                <td>${record.mobile}</td>
+                <td>
+                    <button class="editBtn" data-id="${record.id}">Edit</button>
+                    <button class="deleteBtn" data-id="${record.id}">Delete</button>
+                </td>
+            </tr>
+        </sly>
+    </tbody>
+</table>
+
+<script>
+    // Delete record
+    $(".deleteBtn").click(function () {
+        const id = $(this).data("id");
+        $.ajax({
+            url: "/bin/contactform?recordId=" + id,
+            type: "DELETE",
+            success: function () {
+                alert("Deleted successfully!");
+                location.reload();
+            },
+            error: function () {
+                alert("Error deleting record");
+            }
+        });
+    });
+
+    // Edit record
+    $(".editBtn").click(function () {
+        const id = $(this).data("id");
+        window.location.href = "/content/mysite01/en/contacttable.html?recordId=" + id;
+    });
+</script>

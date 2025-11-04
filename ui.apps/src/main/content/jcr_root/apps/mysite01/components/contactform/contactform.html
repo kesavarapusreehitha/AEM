@@ -1,0 +1,67 @@
+<div class="contact-form">
+    <form id="contactForm">
+        <label>Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label>Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label>Mobile:</label>
+        <input type="text" id="mobile" name="mobile" required><br>
+
+        <!-- Hidden field to store record ID when editing -->
+        <input type="hidden" id="recordId" name="recordId" value="">
+        
+        <button type="button" id="submitForm">Submit</button>
+    </form>
+</div>
+
+<script>
+    // Function: When Submit button is clicked (Create or Update)
+    $("#submitForm").click(function () {
+        const data = {
+            name: $("#name").val(),
+            email: $("#email").val(),
+            mobile: $("#mobile").val(),
+            recordId: $("#recordId").val()
+        };
+
+        $.ajax({
+            url: "/bin/contactform",
+            type: "POST",
+            data: data,
+            success: function () {
+                alert("Saved Successfully!");
+                // Redirect or reload after save
+                window.location.href = "/content/mysite01/en/contacttable.html";
+            },
+            error: function () {
+                alert("Error saving data");
+            }
+        });
+    });
+
+    // Function: When page loads, check if editing an existing record
+    $(document).ready(function () {
+        const params = new URLSearchParams(window.location.search);
+        const recordId = params.get("recordId");
+
+        if (recordId) {
+            // Load existing record details for editing
+            $.ajax({
+                url: "/bin/contactform?recordId=" + recordId,
+                type: "GET",
+                success: function (data) {
+                    const record = JSON.parse(data);
+                    $("#name").val(record.name);
+                    $("#email").val(record.email);
+                    $("#mobile").val(record.mobile);
+                    $("#recordId").val(recordId);
+                },
+                error: function () {
+                    alert("Error loading record for edit");
+                }
+            });
+        }
+    });
+</script>
