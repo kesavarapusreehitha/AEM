@@ -1,0 +1,23 @@
+<sly data-sly-use.model="com.aem.geeks.core.models.WebsiteModel"></sly>
+
+<div class="image-container">
+    <img src="${model.uploadimage}" alt="Uploaded Image" width="200" height="200" />
+    <img src="/content/dam/aemgeeks/file/passport driving licence.jpg" alt="Image" style="width:150px; height:200px;" />
+</div>
+<img src="${properties.fileImage}" alt="Pictures" />
+
+
+<!-- Date and title -->
+<div>Date: ${model.datepicker}</div>
+<h1>Title: ${model.textfield}</h1>
+<p>Description: ${model.description}</p>
+
+<!-- Multifield Items -->
+<ul data-sly-list.item="${model.multifield}">
+    <li>
+        <p>Date: ${item.datepicker}</p>
+        <p>Link Text: ${item.textfield1}</p>
+        <p>Author: ${item.textarea}</p>
+        <p>Link URL: ${item.pathfield}</p>
+    </li>
+</ul>
