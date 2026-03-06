@@ -1,18 +1,28 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
-    <sly data-sly-resource="${@path='left-nav', resourceType='aemgeeks/components/global/navigation'}"></sly>
+
+    <!-- Left Navigation -->
+    <sly data-sly-resource="${'left-nav' @ resourceType='aemgeeks/components/global/navigation'}"></sly>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
-      <!-- Main Content -->
-      <div id="content">
-        <sly data-sly-resource="${@path='topbar', resourceType='aemgeeks/components/global/topbar'}"></sly>
-          <div class="container-fluid">
-            <sly data-sly-resource="${@path='parsys', resourceType='wcm/foundation/components/parsys'}"></sly>
-          </div>
-      </div>
+      
+        <!-- Main Content -->
+        <div id="content">
 
-      <sly data-sly-resource="${@path='footer', resourceType='aemgeeks/components/global/footer'}"></sly>
+            <!-- Topbar -->
+            <sly data-sly-resource="${'topbar' @ resourceType='aemgeeks/components/global/topbar'}"></sly>
+
+            <!-- Container -->
+            <div class="container-fluid">
+                <!-- Paragraph System -->
+                <sly data-sly-resource="${'parsys' @ resourceType='wcm/foundation/components/parsys'}"></sly>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <sly data-sly-resource="${'footer' @ resourceType='aemgeeks/components/global/footer'}"></sly>
+
     </div>
 </div>
 <!-- End of Content Wrapper -->
@@ -21,5 +31,3 @@
 <a class="scroll-to-top rounded" href="#page-top">
   <i class="fas fa-angle-up"></i>
 </a>
-
-

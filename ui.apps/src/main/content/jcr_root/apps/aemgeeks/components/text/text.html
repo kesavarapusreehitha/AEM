@@ -1,0 +1,27 @@
+<sly data-sly-use.model="com.aem.geeks.core.models.TextModel"/>
+
+<h1>Title: ${model.text}</h1>
+
+<p>Path: ${model.link}</p>
+
+<p>Check: ${model.openInNewTab ? 'checked' : 'unchecked'}</p>
+
+<ul data-sly-test="${model.multifield}">
+    <sly data-sly-list.item="${model.multifield}">
+        <li>Text: ${item.textfield}</li>
+        <li>Path: ${item.pathfield}</li>
+    </sly>
+</ul>
+<!--<div style="text-align:${model.alignment @ context='styleString'};">
+    <button 
+        onclick="window.location.href='${model.link @ context='uri'}'"
+        style="background-color:${model.buttonColor @ context='styleString'};
+               ${model.shadowEnabled ? 'box-shadow:2px 2px 5px gray;' : '' @ context='styleString'}">
+        Click Me
+    </button>
+</div>-->
+
+<h2>Design Dialog</h2>
+<div class="bg-${currentStyle.buttonColor}">
+    Component Content
+</div>

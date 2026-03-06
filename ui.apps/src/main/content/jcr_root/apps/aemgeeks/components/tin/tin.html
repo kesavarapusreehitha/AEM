@@ -1,0 +1,10 @@
+<sly data-sly-use.share="com.aem.geeks.core.models.ShareContentModel"/>
+
+
+
+<!-- Button -->
+<button class="share-btn"
+        data-text="${share.shareText @ context='text'}"
+        data-url="${share.targetURL @ context='uri'}">
+    Share Content
+</button>

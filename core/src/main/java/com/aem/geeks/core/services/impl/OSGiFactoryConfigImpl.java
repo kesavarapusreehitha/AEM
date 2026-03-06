@@ -4,15 +4,14 @@ import com.aem.geeks.core.config.GeeksOSGiFactoryConfig;
 import com.aem.geeks.core.services.OSGiFactoryConfig;
 import org.osgi.service.component.annotations.*;
 import org.osgi.service.metatype.annotations.Designate;
+import com.aem.geeks.core.services.impl.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-@Component (service = OSGiFactoryConfig.class,configurationPolicy = ConfigurationPolicy.REQUIRE)
-@Designate (ocd = GeeksOSGiFactoryConfig.class, factory = true)
+@Designate(ocd = GeeksOSGiFactoryConfig.class, factory = true)
 public class OSGiFactoryConfigImpl implements OSGiFactoryConfig {
     private static final Logger LOGGER = LoggerFactory.getLogger(OSGiFactoryConfigImpl.class);
 
@@ -25,13 +24,13 @@ public class OSGiFactoryConfigImpl implements OSGiFactoryConfig {
     @Modified
     protected void activate(final GeeksOSGiFactoryConfig config) {
         configID = config.configID();
-        serviceName=config.serviceName();
-        serviceURL=config.serviceURL();
+        serviceName = config.serviceName();
+        serviceURL = config.serviceURL();
     }
 
     @Reference(service = OSGiFactoryConfig.class, cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
     public void bindOSGiFactoryConfig(final OSGiFactoryConfig config) {
-        if (configsList == null){
+        if (configsList == null) {
             configsList = new ArrayList<>();
         }
         configsList.add(config);
@@ -46,25 +45,26 @@ public class OSGiFactoryConfigImpl implements OSGiFactoryConfig {
     public int getConfigID() {
         return configID;
     }
+
     @Override
     public String getServiceName() {
         return serviceName;
     }
+
     @Override
     public String getServiceURL() {
         return serviceURL;
     }
 
-
     @Override
-    public List<OSGiFactoryConfig> getAllConfigs(){
+    public List<OSGiFactoryConfig> getAllConfigs() {
         return configsList;
     }
 
     @Override
     public OSGiFactoryConfig get(int configID) {
         for (OSGiFactoryConfig confFact : configsList) {
-            if (configID==confFact.getConfigID())
+            if (configID == confFact.getConfigID())
                 return confFact;
         }
         return null;

@@ -1,6 +1,7 @@
 package com.aem.geeks.core.services.impl;
 
 import com.aem.geeks.core.services.DemoService;
+import com.aem.geeks.core.services.impl.Component;
 import com.aem.geeks.core.utils.ResolverUtil;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
@@ -18,7 +19,7 @@ import javax.jcr.Session;
 import java.util.Iterator;
 import java.util.List;
 
-@Component(service = DemoService.class,immediate = true)
+
 public class DemoServiceAImpl implements DemoService {
     private static final Logger LOG= LoggerFactory.getLogger(DemoServiceAImpl.class);
 

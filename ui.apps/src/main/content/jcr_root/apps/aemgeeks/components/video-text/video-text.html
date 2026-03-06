@@ -1,0 +1,17 @@
+<div data-sly-use.model="com.aem.geeks.core.models.Videotext  class="cmp-videotext">
+    <div data-sly-test="${(wcmmode.edit || wcmmode.preview) && !model.text}"
+         class="cq-placeholder"
+         data-emptytext="Configure Component">
+    </div>
+
+    <!-- Content -->
+    <div data-sly-test="${model.text}">
+        <p>
+            <a href="${model.link}.html"
+               target="${model.openInNewTab ? '_blank' : '_self'}">
+                ${model.text}
+            </a>
+        </p>
+    </div>
+
+</div>

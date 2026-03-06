@@ -1,6 +1,5 @@
 package com.aem.geeks.core.helper;
 
-import com.aem.geeks.core.models.impl.AuthorBooksImpl;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.slf4j.Logger;
@@ -16,23 +15,24 @@ public class MultifieldHelper {
     private Date publishDate;
     private int copies;
     private List<NastedHalper> bookEditons;
-    public MultifieldHelper(Resource resource){
+
+    public MultifieldHelper(Resource resource) {
         try {
-            if(StringUtils.isNotBlank(resource.getValueMap().get("bookname", String.class))) {
+            if (StringUtils.isNotBlank(resource.getValueMap().get("bookname", String.class))) {
                 this.bookName = resource.getValueMap().get("bookname", String.class);
             }
-            if(StringUtils.isNotBlank(resource.getValueMap().get("booksubject", String.class))) {
-                this.bookSubject=resource.getValueMap().get("booksubject",String.class);
+            if (StringUtils.isNotBlank(resource.getValueMap().get("booksubject", String.class))) {
+                this.bookSubject = resource.getValueMap().get("booksubject", String.class);
             }
-            if(resource.getValueMap().get("publishdate",Date.class)!=null) {
-                this.publishDate=resource.getValueMap().get("publishdate",Date.class);
+            if (resource.getValueMap().get("publishdate", Date.class) != null) {
+                this.publishDate = resource.getValueMap().get("publishdate", Date.class);
             }
-            if(resource.getValueMap().get("copies",Integer.class)!=null) {
-                this.copies=resource.getValueMap().get("copies",Integer.class);
+            if (resource.getValueMap().get("copies", Integer.class) != null) {
+                this.copies = resource.getValueMap().get("copies", Integer.class);
             }
 
-        }catch (Exception e){
-            LOG.info("\n BEAN ERROR : {}",e.getMessage());
+        } catch (Exception e) {
+            LOG.info("\n BEAN ERROR : {}", e.getMessage());
         }
 
     }

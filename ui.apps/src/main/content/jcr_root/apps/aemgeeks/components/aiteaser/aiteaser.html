@@ -1,0 +1,7 @@
+<div data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+     class="ai-teaser">
+    <h2 class="ai-teaser__title">${properties.title}</h2>
+    <div class="ai-teaser__description">${properties.description @ context='html'}</div>
+    <a href="${properties.link}" class="ai-teaser__cta" sly-test="${properties.cta}">${properties.cta}</a>
+    <sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!properties.title}"></sly>
+</div>
